@@ -4,7 +4,6 @@
 # Import the convert method from the
 # docx2pdf module
 print("aaaaaaaaaaaaaa")
-from docx2pdf import convert
 
 # convert(r"C:\Users\EV\Desktop\Property\modified.docx", r"C:\Users\EV\Desktop\Property\output.pdf")
 import subprocess
@@ -15,6 +14,7 @@ print("bbbbbbbbbbbbbbbbbbb")
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
+from docx2pdf import convert
 
 # Usage example
 package_name = "your_package_name"
@@ -25,6 +25,10 @@ print("ccccccccccc")
 
 
 def convert_docx_to_pdf(input_file, output_file):
+
+
+
+    install("docx2pdf")
     convert(input_file, output_file)
 
 
