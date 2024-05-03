@@ -21,6 +21,7 @@
     "cors": "^2.8.5",
     "docx-pdf": "^0.0.1",
     "docx-to-pdf": "^1.1.0",
+    "docx2pdf": "^0.0.4",
     "docx2pdf-converter": "^1.1.0",
     "docxtemplater": "^3.47.1",
     "dotenv": "^11.0.0",
