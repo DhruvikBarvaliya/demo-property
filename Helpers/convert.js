@@ -38,23 +38,39 @@ async function replacePlaceholderInDocx(docxPath, obj, file_name) {
     console.error("Error:", error.message);
   }
 }
+const axios = require("axios");
 
-function convertDocxToPdf(docxPath, pdfPath) {
+async function convertDocxToPdf(docxPath, pdfPath) {
   const fs = require("fs");
   const path = require("path");
   const { exec } = require("child_process");
 
+  console.log(">>>>>>>>>>>>>>>",__dirname);
   console.log(path.join(__dirname, "..", "Media", "pdf"));
 
   const filePath = path.join(__dirname, "..", "Media", "pdf", `${pdfPath}.pdf`);
   console.log(filePath);
 
-  exec(`python convert.py ${docxPath} ${filePath}`, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-    console.log(`Python function output: ${stdout}`);
-  });
+  // exec(`python convert.py ${docxPath} ${filePath}`, (error, stdout, stderr) => {
+  //   if (error) {
+  //     console.error(`exec error: ${error}`);
+  //     return;
+  //   }
+  //   console.log(`Python function output: ${stdout}`);
+  // });
+
+  // async function addNumbers(docxPath, num2) {
+  try {
+    const response = await axios.post("https://fast-property.onrender.com/items", {
+      docxPath,
+      filePath,
+    });
+    console.log(response);
+    const result = response.data.result;
+    console.log(`Result of adding ${docxPath} and ${filePath}: ${result}`);
+  } catch (error) {
+    console.error("Error calling Python API:", error.message);
+  }
+  // }
 }
 module.exports = { replacePlaceholderInDocx, convertDocxToPdf };
